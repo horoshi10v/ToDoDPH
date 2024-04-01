@@ -1,6 +1,5 @@
 # Use the official Node.js image as base image for building the Vue.js application
 FROM node:20.11-alpine
-
 # Set the working directory in the container
 WORKDIR /app/client/
 

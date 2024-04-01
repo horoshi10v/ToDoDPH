@@ -1,5 +1,5 @@
-# Use a base image with Node.js installed
-FROM node:latest
+# Use a base image with Node.js LTS on Alpine Linux
+FROM node:lts-alpine
 
 # Set the working directory inside the container
 WORKDIR /app/server
@@ -8,7 +8,7 @@ WORKDIR /app/server
 COPY package*.json ./
 
 # Install server dependencies
-RUN npm install
+RUN npm install --production
 
 # Copy the rest of the server application code
 COPY . .
