@@ -7,7 +7,7 @@ const taskRoutes = require('./routes/taskRoutes')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = 'mongodb+srv://valentynkhoroshylov:ielPvOGmBOwuUhT8@cluster0.m3zhpxu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const MONGODB_URI = 'mongodb://mongo:27017/myapp';
 
 // Middleware
 app.use(bodyParser.json());
