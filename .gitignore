@@ -1,13 +1,10 @@
-# Ignore .idea directory
 .idea/
-
-# Ignore node_modules in the root directory
 node_modules/
 
-# Ignore node_modules and .idea directory in the client directory
 client/node_modules/
 client/.idea/
 
-# Ignore node_modules and .idea directory in the server directory
 server/node_modules/
 server/.idea/
+
+.gitignore
