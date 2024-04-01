@@ -1,16 +1,17 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const bookRoutes = require('./routes/bookRoutes');
 const cors = require('cors');
 const categoryRoutes = require('./routes/categoryRoutes');
+const taskRoutes = require('./routes/taskRoutes')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = 'mongodb+srv://valentynkhoroshylov:ielPvOGmBOwuUhT8@cluster0.m3zhpxu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 // Middleware
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(cors());
 
@@ -22,6 +23,8 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 
 // Routes
 app.use('/api/category', categoryRoutes);
+app.use('/api/task', taskRoutes);
+
 
 // Start the server
 app.listen(PORT, () => {

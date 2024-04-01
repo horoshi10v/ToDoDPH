@@ -8,6 +8,6 @@ router.post('/', taskController.createTask);
 router.put('/:id', taskController.updateTask);
 router.delete('/:id', taskController.deleteTask);
 router.put('/:id/complete', taskController.completeTask);
-router.get('/:category/',taskController.taskByCategory);
+router.get('/category/:category_id',taskController.taskByCategory);
 
 module.exports = router;

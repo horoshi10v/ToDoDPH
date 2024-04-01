@@ -1,6 +1,4 @@
 const Task = require('../models/Task');
-const Category = require("../models/Category");
-
 
 const taskController= {
     getAllTask: async (req, res) => {
@@ -78,17 +76,17 @@ const taskController= {
         }
     },
     taskByCategory: async (req, res) => {
+        const categoryId = req.params.category_id; // Assuming you're passing category_id as a parameter in the URL
         try {
-            const task = await Task.findByParam(req.params.);
-            if (task) {
-                res.json(task);
+            const tasks = await Task.find({ category: categoryId });
+            if (tasks.length > 0) {
+                res.json(tasks);
             } else {
-                res.status(404).json({ message: 'Task not found' });
+                res.status(404).json({ message: 'No tasks found for this category' });
             }
         } catch (err) {
             res.status(500).json({ message: err.message });
         }
-    },
-
+    }
 };
 module.exports = taskController;
