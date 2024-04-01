@@ -11,6 +11,7 @@ const MONGODB_URI = 'mongodb+srv://valentynkhoroshylov:ielPvOGmBOwuUhT8@cluster0
 
 // Middleware
 app.use(bodyParser.json());
+
 app.use(cors());
 
 

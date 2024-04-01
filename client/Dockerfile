@@ -1,26 +1,29 @@
-# Use the official Node.js image as base image for building the Vue.js application
-FROM node:20.11-alpine
-# Set the working directory in the container
-WORKDIR /app/client/
+# Use a base image with Node.js LTS on Alpine Linux
+FROM node:lts-alpine as builder
 
-# Copy package.json and package-lock.json to container
+# Set the working directory inside the container
+WORKDIR /app/client
+
+# Copy package.json and yarn.lock to the working directory
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application code to the container
+# Copy the rest of the client application code
 COPY . .
 
-# Build the Vue.js application
+# Build the application
 RUN npm run build
 
-# Stage 2: Serve the built Vue.js application using Nginx
-FROM nginx:20.11-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
-# Copy from the stage 1
-COPY --from=builder /dist /usr/share/nginx/html/nested-app
-EXPOSE 8080
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Use a lightweight Nginx image to serve the built Vue.js application
+FROM nginx:alpine as production-build
+
+# Copy the built application to the Nginx web server directory
+COPY --from=builder /app/client/dist /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Default command to start Nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]
