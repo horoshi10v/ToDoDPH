@@ -29,10 +29,22 @@ The project is organized into two main folders:
 
 To run the ToDo app locally using Docker Compose, follow these steps:
 
-1. Clone this repository: `https://github.com/horoshi10v/ToDoDPH.git`
-2. Navigate to the project directory: `cd ToDoDPH`
-3. Run Docker Compose: `docker-compose up --build`
-4. Access the application in your web browser at: `http://localhost:8080`
+1. Clone this repository: 
+```bash 
+https://github.com/horoshi10v/ToDoDPH.git` 
+````
+2. Navigate to the project directory: 
+```bash 
+cd ToDoDPH
+```
+3. Run Docker Compose: 
+```bash 
+docker-compose up --build
+```
+4. Access the application in your web browser at: 
+```bash 
+http://localhost:8080
+```
 
 ## Additional Notes
 
